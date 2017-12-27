@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="config.properties" />
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+        <!--生成实体类的配置-->
+        <javaModelGenerator targetPackage="com.jeff.springbootmybatis.model" targetProject="src\main\java"/>
+        <!--配置后可以生成Mapper接口对应的XML文件-->
+        <sqlMapGenerator targetPackage="com.jeff.springbootmybatis.mapper" targetProject="src\main\resources"/>
+        <!--通用Mapper接口的配置，配置javaClientGenerator后会生成对应的接口文件，该接口会自动继承前面配置的通用Mapper接口-->
+        <javaClientGenerator targetPackage="com.jeff.springbootmybatis.mapper" targetProject="src\main\java" type="XMLMAPPER"/>
+
+        <table tableName="f_configuration" domainObjectName="Configuration">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jeff.springbootmybatis.mapper.ConfigurationMapper" >
+  <resultMap id="BaseResultMap" type="com.jeff.springbootmybatis.model.Configuration" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="conf_key" property="confKey" jdbcType="VARCHAR" />
+    <result column="conf_name" property="confName" jdbcType="VARCHAR" />
+    <result column="conf_value" property="confValue" jdbcType="VARCHAR" />
+    <result column="conf_type" property="confType" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

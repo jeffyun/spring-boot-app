@@ -1,5 +1,6 @@
 package com.jeffyun.springbootweb;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,5 +13,6 @@ public class SpringBootWebApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
+
 
 }
