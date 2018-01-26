@@ -25,6 +25,7 @@ public class ConfigurationController {
     public @ResponseBody CommonResponse listConfiguration() {
         return CommonResponse.RESPONSE_OK;
     }
+
 //
 //    @RequestMapping(value = "/{id}",method = RequestMethod.GET,produces = "application/json")
 //    @ApiImplicitParams({
