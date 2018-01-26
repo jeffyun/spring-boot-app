@@ -21,7 +21,7 @@ public class ConfigurationController {
 
     @RequestMapping(method = RequestMethod.GET,produces = "application/json")
     @ApiResponses({@ApiResponse(code = 200,message = "对象参数",response = CommonResponse.class)})
-    @ApiOperation(value = "查询配置信息集合列表")
+    @ApiOperation(value = "查询配置信息集合 列表")
     public @ResponseBody CommonResponse listConfiguration() {
         return CommonResponse.RESPONSE_OK;
     }
