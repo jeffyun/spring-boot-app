@@ -18,7 +18,9 @@
     <modules>
         <module>spring-boot-web</module>
         <module>spring-boot-mybatis</module>
-        <module>spring-boot-swagger</module>
+        <module>spring-boot-shiro</module>
+        <module>spring-boot-common</module>
+        <module>cas-server</module>
     </modules>
 
     <properties>
