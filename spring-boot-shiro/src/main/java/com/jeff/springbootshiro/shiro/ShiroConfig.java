@@ -99,14 +99,23 @@ public class ShiroConfig {
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
-        filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/login.html","anon");
-        filterChainDefinitionMap.put("/js/**","anon");
-        filterChainDefinitionMap.put("/css/**","anon");
-        filterChainDefinitionMap.put("/images/**","anon");
-        filterChainDefinitionMap.put("/layui/**","anon");
-        filterChainDefinitionMap.put("/**", "authc");
 
+        filterChainDefinitionMap.put("/logout", "anon");
+        filterChainDefinitionMap.put("/login.html", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
+        filterChainDefinitionMap.put("/error/**", "anon");
+        filterChainDefinitionMap.put("/login", "anon");
+        // 此处将logout页面设置为anon，而不是logout，因为logout被单点处理，而不需要再被shiro的logoutFilter进行拦截
+        filterChainDefinitionMap.put("/logout", "anon");
+        filterChainDefinitionMap.put("/error", "anon");
+        //3.拦截的请求（从本地数据库获取或者从casserver获取(webservice,http等远程方式)，看你的角色权限配置在哪里）
+        filterChainDefinitionMap.put("/user", "authc"); //需要登录
+
+        //4.登录过的不拦截
+        filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
 

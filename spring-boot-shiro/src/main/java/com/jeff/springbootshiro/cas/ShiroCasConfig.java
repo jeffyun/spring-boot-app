@@ -25,7 +25,6 @@ public class ShiroCasConfig {
 
     // cas server地址
     public static final String casServerUrlPrefix = "https://cas.server.com:8443/cas";
-//    public static final String casServerUrlPrefix = "http://passport.sso.com:8443/cas";
     // Cas登录页面地址
     public static final String casLoginUrl = casServerUrlPrefix + "/login";
     // Cas登出页面地址
@@ -36,7 +35,7 @@ public class ShiroCasConfig {
     public static final String casFilterUrlPattern = "/shiro-cas";
     // 登录地址
     public static final String loginUrl = casLoginUrl + "?service=" + shiroServerUrlPrefix + casFilterUrlPattern;
-    // 登出地址（casserver启用service跳转功能，需在webapps\cas\WEB-INF\cas.properties文件中启用cas.logout.followServiceRedirects=true）
+    // 登出地址
     public static final String logoutUrl = casLogoutUrl + "?service=" + loginUrl;
     // 登录成功地址
     public static final String loginSuccessUrl = "/";
@@ -132,13 +131,7 @@ public class ShiroCasConfig {
         return filterRegistration;
     }
 
-    /**
-     * 该类可以保证实现了org.apache.shiro.util.Initializable接口的shiro对象的init或者是destory方法被自动调用，
-     * 而不用手动指定init-method或者是destory-method方法
-     * 注意：如果使用了该类，则不需要手动指定初始化方法和销毁方法，否则会出错
-     *
-     * @return
-     */
+
     @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
@@ -178,7 +171,6 @@ public class ShiroCasConfig {
         CasFilter casFilter = new CasFilter();
         casFilter.setName("casFilter");
         casFilter.setEnabled(true);
-        // 登录失败后跳转的URL，也就是 Shiro 执行 CasRealm 的 doGetAuthenticationInfo 方法向CasServer验证tiket
         casFilter.setFailureUrl(unauthorizedUrl);
         casFilter.setLoginUrl(loginUrl);
         return casFilter;
